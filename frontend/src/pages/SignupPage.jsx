@@ -9,14 +9,7 @@ const SignupPage = () => {
     email: "",
     password: "",
   });
-
-//   const queryClient = useQueryClient();
-
-//   const { mutate:signupMutation, ispending, error} = useMutation({
-//     mutationFn: signup,
-//     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
-//   });
-
+  
 const {ispending, error, signupMutation} = useSignUp();
 
   const handleSignup = (e) => {
