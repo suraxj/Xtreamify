@@ -5,7 +5,7 @@ const apiKey = process.env.XTEAM_API_KEY;
 const apiSecret = process.env.XTEAM_API_SECRET;
 
 if (!apiKey || !apiSecret) {
-  console.error("Xtream API key or Secret is missing");
+  console.error("Stream API key or Secret is missing");
 }
 
 const streamClient = StreamChat.getInstance(apiKey, apiSecret);
@@ -15,17 +15,16 @@ export const upsertStreamUser = async (userData) => {
     await streamClient.upsertUsers([userData]);
     return userData;
   } catch (error) {
-    console.error("Error upserting Xtream user:", error);
+    console.error("Error upserting Stream user:", error);
   }
 };
 
 export const generateStreamToken = (userId) => {
-    try {
-      // Ensure userId is a String
-      const userIdStr = String(userId);
-      return streamClient.createToken(userIdStr);  
-    } catch (error) {
-        console.log("Error generating Stream token", error);
-        
-    }
+  try {
+    // ensure userId is a string
+    const userIdStr = userId.toString();
+    return streamClient.createToken(userIdStr);
+  } catch (error) {
+    console.error("Error generating Stream token:", error);
+  }
 };
